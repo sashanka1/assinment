@@ -27,3 +27,13 @@
     color: aqua;
     margin-left: calc((100vw-100px)/2);
 }
+.empcont{
+    display: grid;
+    grid-template-columns: repeat(4, 2.3fr);
+    gap: 10px;
+}
+
+.empdiv{
+    border: 1px solid black;
+    cursor: pointer;
+}

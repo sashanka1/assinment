@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import "./form.css"
+ 
+import {Employees} from "./employee"
 
 function Formdata(){
     const [formdata, setFromdata] = useState({
@@ -11,6 +13,7 @@ function Formdata(){
         gender:"",
         hobbies:""
       });
+      const [emp ,Setallemp] = useState([])
       const handlechange = (e) => {
         
           setFromdata({ ...formdata, [e.target.name]: e.target.value });
@@ -22,7 +25,7 @@ function Formdata(){
         // console.log(formdata);
         
           
-          let resp = await fetch(" http://localhost:8080/Employee", {
+          let resp = await fetch("http://localhost:8080/Employee", {
             method:"post",
             body:JSON.stringify({
                 // name, email, phone, dob, gender, hobbies
@@ -45,7 +48,8 @@ function Formdata(){
             });
             console.log( "resp",resp)
             
-    
+           
+            empda();
         
     
          
@@ -53,6 +57,21 @@ function Formdata(){
     
     
       };
+
+      const empda = async ()=>{
+        let empdata =await fetch("http://localhost:8080/Employee").then((res) => {
+            return res.json();
+            });
+            console.log( "resp",empdata)
+        // let alldata = empdata.JSON();
+        // console.log("s",alldata);
+         Setallemp([... empdata])
+    }
+   
+
+      useEffect(()=>{
+        empda();
+      },[])
       return (
         <>
         <div className="signinCont">
@@ -106,6 +125,11 @@ function Formdata(){
           />
           
           <button onClick={submit}>submit</button>
+        </div>
+        
+        <p>employee list</p>
+        <div className="empcont">
+            <Employees data={emp}/>
         </div>
         </>
 )}
