@@ -35,6 +35,16 @@
       "gender": "male",
       "hobbies": "coding",
       "id": 4
+    },
+    {
+      "name": "x",
+      "email": "x@gmail.com",
+      "phone": "1234567890",
+      "dob": "2022-09-16",
+      "gender": "male",
+      "hobbies": "coding",
+      "id": 5
     }
+
   ]
 }
